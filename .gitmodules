@@ -1,0 +1,3 @@
+[submodule "strong"]
+  path = strong
+  url = git://github.com/BlackBulletIV/strong.git

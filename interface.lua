@@ -43,9 +43,9 @@ function interface.format(s, nameLen, fractLen)
   return ret .. "|"
 end
 
-function interface.exit(msg)
+function interface.exit(msg, code)
   print(msg)
-  os.exit(1)
+  os.exit(code or 1)
 end
 
 function interface.handleSubject(title, change)
@@ -71,11 +71,16 @@ end
 function interface.cmd.list()
   local nameLen = 0
   local fractLen = 0
+  local count = 0
   
   for _, v in pairs(data.subjects) do
+    count = count + 1
     nameLen = math.max(nameLen, #v.title)
     fractLen = math.max(fractLen, #(("%s/%s"):format(v.current, v.quota)))
   end
+  
+  -- there's no subjects present, we'll exit now
+  if count == 0 then interface.exit("There are no subjects at the moment.", 0) end
   
   for _, v in pairs(data.subjects) do
     print(interface.format(v, nameLen, fractLen))
