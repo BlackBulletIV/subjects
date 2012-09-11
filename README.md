@@ -14,7 +14,7 @@ $ git submodule update --init
 
 From there you might want to set up an alias or symbolic link to the `main.lua` file. Personally (being on OS X), I added an alias to `~/.bash_profile` which points `subjects` to the file.
 
-## Usage Example
+## Usage
 
 Executing the program with no arguments will list all subjects:
 
