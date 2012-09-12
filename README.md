@@ -32,10 +32,12 @@ $ subjects add lua 20
 $ subjects add foobar 90
 ```
 
-After `add` you provide a title and a weekly quota. If you want to remove a subject, just use `rm`:
+After `add` you provide a title and a weekly quota. If you want to modify the quota of, or remove, a subject, you can use `mod` and `rm`:
 
 ``` bash
-$ subjects rm foobar
+$ subjects mod foobar 22 # modify quota
+foobar  0/22  |                                        |
+$ subjects rm foobar # remove subject
 ```
 
 Let's list them out.
