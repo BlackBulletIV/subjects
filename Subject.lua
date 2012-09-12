@@ -12,8 +12,6 @@ function Subject:init(title, quota, current, updated)
   self.quota = quota or 1
   self.current = current or 0
   self.updated = updated or os.time()
-  self.prevCurrent = 0
-  self.prevUpdated = 0
   if updated then self:checkUpdated() end
 end
 
@@ -28,13 +26,11 @@ function Subject:sub(amount)
 end
 
 function Subject:toDataString()
-  return ("%s %s %s/%s %s %s"):format(
+  return ("%s %s %s/%s"):format(
     self.title,
     self.updated,
     self.current,
-    self.quota,
-    self.prevUpdated,
-    self.prevCurrent
+    self.quota
   )
 end
 
@@ -50,8 +46,6 @@ end
 function Subject:checkUpdated()
   -- new week
   if os.date("%w", os.time()) < os.date("%w", self.updated) then
-    self.prevCurrent = self.current
-    self.prevUpdated = self.updated
     self.current = 0
     self.updated = os.time()
   end
