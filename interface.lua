@@ -1,5 +1,5 @@
 interface = {}
-interface.progressMeterLength = 40
+interface.progressBarLength = 40
 interface.columnPadding = 2
 interface.cmd = {}
 
@@ -33,10 +33,10 @@ function interface.format(s, nameLen, fractLen)
   ret = ret .. fract .. " " * (math.max((fractLen or 0) - #fract, 0) + interface.columnPadding)
   
   -- progress bar
-  local num = math.min(s.current / s.quota, 1) * interface.progressMeterLength
+  local num = math.min(s.current / s.quota, 1) * interface.progressBarLength
   ret = ret .. "|"
   
-  for i = 1, interface.progressMeterLength do
+  for i = 1, interface.progressBarLength do
     ret = ret .. (i <= num and "|" or " ")
   end
   
