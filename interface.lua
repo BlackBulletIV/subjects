@@ -92,7 +92,7 @@ function interface.cmd.add(title, quota)
   data.add(title, tonumber(quota))
 end
 
-function interface.cmd.mod(title, quota)
+function interface.cmd.edit(title, quota)
   local s = data.subjects[title]
   if not s then interface.exit("'" + title + "' isn't a subject. Use the add command.") end
   s.quota = tonumber(quota)

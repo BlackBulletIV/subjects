@@ -44,8 +44,8 @@ function Subject:fromDataString(str)
 end
 
 function Subject:checkUpdated()
-  -- new week
-  if os.date("%w", os.time()) < os.date("%w", self.updated) then
+  -- new week (%U = week number)
+  if os.date("%U", os.time()) ~= os.date("%U", self.updated) then
     self.current = 0
     self.updated = os.time()
   end
