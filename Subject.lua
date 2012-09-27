@@ -16,12 +16,7 @@ function Subject:init(title, quota, current, updated)
 end
 
 function Subject:add(amount)
-  self.current = self.current + amount
-  self.updated = os.time()
-end
-
-function Subject:sub(amount)
-  self.current = math.max(self.current - amount, 0)
+  self.current = math.max(self.current + math.floor(amount + 0.5), 0)
   self.updated = os.time()
 end
 

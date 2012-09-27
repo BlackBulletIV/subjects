@@ -54,13 +54,11 @@ function interface.handleSubject(title, change)
   
   if amount == 0 then
     print("Adding zero won't do much!")
-  elseif amount < 0 then
-    s:sub(math.abs(amount))
   else
     local oldAmount = s.current
     s:add(amount)
     
-    if oldAmount < s.quota and s.current >= s.quota then
+    if amount > 0 and oldAmount < s.quota and s.current >= s.quota then
       print("Well done! You've completed this weeks quota.")
     end
   end
