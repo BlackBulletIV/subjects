@@ -59,7 +59,7 @@ function interface.handleSubject(title, change)
     s:add(amount)
     
     if amount > 0 and oldAmount < s.quota and s.current >= s.quota then
-      print("Well done! You've completed this weeks quota.")
+      print("Well done! You've completed this week's quota.")
     end
   end
   
