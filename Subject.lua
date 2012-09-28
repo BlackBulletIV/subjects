@@ -16,8 +16,7 @@ function Subject:init(title, quota, current, updated)
 end
 
 function Subject:add(amount)
-  self.current = math.max(self.current + math.floor(amount + 0.5), 0)
-  self.updated = os.time()
+  self.current, self.updated = math.max(self.current + math.floor(amount + 0.5), 0), os.time()
 end
 
 function Subject:toDataString()
@@ -32,16 +31,13 @@ end
 function Subject:fromDataString(str)
   local t, u, c, q = str:match("(%w+)%s+(%d+)%s+(%d+)/(%d+)")
   self.title = t
-  self.updated = tonumber(u)
-  self.current = tonumber(c)
-  self.quota = tonumber(q)
+  self.updated, self.current, self.quota = tonumber(u), tonumber(c), tonumber(q)
   self:checkUpdated()
 end
 
 function Subject:checkUpdated()
   -- new week (%U = week number)
   if os.date("%U", os.time()) ~= os.date("%U", self.updated) then
-    self.current = 0
-    self.updated = os.time()
+    self.current,self.updated = 0, os.time()
   end
 end
